@@ -1,11 +1,16 @@
-import { Box, Icon, Stack, Text, Link } from "@chakra-ui/react";
 import React from "react";
+import { Box, Icon, Stack, Text, Link } from "@chakra-ui/react";
+
 import {
   RiContactsLine,
   RiDashboardLine,
   RiGitMergeLine,
   RiInputMethodLine,
 } from "react-icons/ri";
+
+interface NextLinkProps {
+  passHref?: boolean;
+}
 
 export default function Sidebar() {
   return (
