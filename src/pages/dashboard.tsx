@@ -25,24 +25,18 @@ const options: ApexOptions = {
   tooltip: { enabled: false },
 
   xaxis: {
-    type: "datetime",
     axisBorder: {
       color: theme.colors.gray["600"],
     },
     axisTicks: { color: theme.colors.gray["600"] },
+
     categories: [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      // "2022-04-02T00:00:00:00.000Z",
-      //"2022-04-03T00:00:00:00.000Z",
-      //   "2022-04-04T00:00:00:00.000Z",
-      //"2022-04-05T00:00:00:00.000Z",
-      //   "2022-04-06T00:00:00:00.000Z",
-      //   "2022-04-07T00:00:00:00.000Z",
+      new Date("2022,01,08").toLocaleDateString(),
+      new Date("2022,02,08").toLocaleDateString(),
+      new Date("2022,03,08").toLocaleDateString(),
+      new Date("2022,04,08").toLocaleDateString(),
+      new Date("2022,05,08").toLocaleDateString(),
+      new Date("2022,06,08").toLocaleDateString(),
     ],
   },
 
