@@ -3,7 +3,13 @@ import PaginationItem from "./PaginationItem";
 
 export default function Pagination() {
   return (
-    <Stack direction="row" spacing="6" mt="8" justify="flex-end" align="center">
+    <Stack
+      direction={["column", null, "row"]}
+      spacing="6"
+      mt="8"
+      justify="flex-end"
+      align="center"
+    >
       <Box>
         <strong>0</strong>-<strong>10</strong> de <strong>100</strong>
       </Box>
