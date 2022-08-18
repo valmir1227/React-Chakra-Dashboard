@@ -5,19 +5,12 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
-import { forwardRef, ForwardRefRenderFunction, ReactNode } from "react";
-import { Message, MultipleFieldErrors, Ref } from "react-hook-form";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
-export type FieldError = {
-  type: string;
-  ref?: Ref;
-  types?: MultipleFieldErrors;
-  message?: Message;
-};
 interface InputProps extends ChakraInputProps {
   name: string;
   label?: string;
-  error?: FieldError;
+  error?: any;
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
