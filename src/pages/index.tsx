@@ -54,6 +54,8 @@ export default function SignIn() {
           />
         </Stack>
         <Button
+          as="a"
+          href="/dashboard"
           type="submit"
           mt="6"
           colorScheme="pink"
