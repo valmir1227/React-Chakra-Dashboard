@@ -35,7 +35,7 @@ const createUserSchema = yup.object().shape({
     .oneOf([null, yup.ref("password")], "As senhas devem ser iguais"),
 });
 
-export default function createUser() {
+export default function CreateUser() {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(createUserSchema),
   });
