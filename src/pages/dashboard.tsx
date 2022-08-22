@@ -16,6 +16,7 @@ const options: ApexOptions = {
     zoom: { enabled: false },
     foreColor: theme.colors.gray["500"],
   },
+  colors: [theme.colors.blue["400"]],
 
   grid: { show: false },
   dataLabels: {
@@ -44,8 +45,8 @@ const options: ApexOptions = {
     type: "gradient",
     gradient: {
       shade: "dark",
-      opacityFrom: 0.7,
-      opacityTo: 0.3,
+      opacityFrom: 1,
+      opacityTo: 0.4,
     },
   },
 };

@@ -13,6 +13,7 @@ import {
   Tr,
   Text,
   useBreakpointValue,
+  theme,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { RiAddLine, RiPencilLine, RiRefreshLine } from "react-icons/ri";
@@ -43,7 +44,7 @@ export default function UserList() {
                 as="a"
                 size="sm"
                 fontSize="sm"
-                colorScheme="pink"
+                colorScheme="green"
                 leftIcon={<Icon as={RiAddLine} fontSize="20"></Icon>}
               >
                 Criar Novo
@@ -54,7 +55,7 @@ export default function UserList() {
             <Thead>
               <Tr>
                 <Th px="6" color="gray.300" width="8">
-                  <Checkbox colorScheme="pink" />
+                  <Checkbox colorScheme="green" />
                 </Th>
                 <Th>Usuário</Th>
                 <Th display={["none", "block"]}>Data de cadastro</Th>
@@ -64,7 +65,7 @@ export default function UserList() {
             <Tbody>
               <Tr>
                 <Td px="6">
-                  <Checkbox colorScheme="pink" />
+                  <Checkbox colorScheme="green" />
                 </Td>
                 <Td>
                   <Box>
@@ -83,7 +84,7 @@ export default function UserList() {
                     as="a"
                     size="sm"
                     fontSize="sm"
-                    colorScheme="purple"
+                    colorScheme="teal"
                     leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
                   >
                     {isWidescreen ? "Editar" : ""}
@@ -93,7 +94,7 @@ export default function UserList() {
 
               <Tr>
                 <Td px="6">
-                  <Checkbox colorScheme="pink" />
+                  <Checkbox colorScheme="green" />
                 </Td>
                 <Td>
                   <Box>
@@ -112,7 +113,7 @@ export default function UserList() {
                     as="a"
                     size="sm"
                     fontSize="sm"
-                    colorScheme="purple"
+                    colorScheme="teal"
                     leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
                   >
                     {isWidescreen ? "Editar" : ""}
@@ -122,7 +123,7 @@ export default function UserList() {
 
               <Tr>
                 <Td px="6">
-                  <Checkbox colorScheme="pink" />
+                  <Checkbox colorScheme="teal" />
                 </Td>
                 <Td>
                   <Box>
@@ -141,7 +142,7 @@ export default function UserList() {
                     as="a"
                     size="sm"
                     fontSize="sm"
-                    colorScheme="purple"
+                    colorScheme="teal"
                     leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
                   >
                     {isWidescreen ? "Editar" : ""}

@@ -58,7 +58,7 @@ export default function SignIn() {
           href="/dashboard"
           type="submit"
           mt="6"
-          colorScheme="pink"
+          colorScheme="green"
           size="lg"
           isLoading={formState.isSubmitting}
         >

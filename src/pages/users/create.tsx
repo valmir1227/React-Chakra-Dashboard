@@ -109,7 +109,7 @@ export default function createUser() {
               </Link>
               <Button
                 type="submit"
-                colorScheme="pink"
+                colorScheme="green"
                 isLoading={formState.isSubmitting}
               >
                 Salvar

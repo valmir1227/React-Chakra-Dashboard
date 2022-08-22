@@ -1,0 +1,18 @@
+----------- Data Fetching ------------
+Problemas do axios e Fetch API: Apartir do momento que esses dados não estão
+mais visíveis em tela nossa aplicação não guarda "resquicios" eles vão sumir
+para sempre, e ao voltar na pagina ele vai fazer uma nova chamada.
+
+Cache local de dados:  Armazena os dados das requisiçoes em um cahce, para
+quando a pessoa precisar das informações novamente, mostrar os dados com
+melhor usabilidade(instataneamente), sem precisar carregar novamente os dados.
+
+Preocupação no cahce local: Sincronização dos dados -> Caso haja uma edição nos
+dados deve ser feito DATA Syncking, que é alterar os dados que estão armazenados
+no cache.
+
+
+
+
+
+

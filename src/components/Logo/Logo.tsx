@@ -11,7 +11,7 @@ export default function Logo() {
       w="64"
     >
       dashgo
-      <Text as="span" color="pink.500" marginLeft={1}>
+      <Text as="span" color="green.400" marginLeft={1}>
         .
       </Text>
     </Text>
