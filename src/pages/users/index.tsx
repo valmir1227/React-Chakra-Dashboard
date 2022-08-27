@@ -16,7 +16,6 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import Header from "../../components/Header/Header";
 import Pagination from "../../components/Pagination";
@@ -82,92 +81,44 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td px="6">
-                      <Checkbox colorScheme="green" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Valmir Almeida</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          almeidavalmir76@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    <Td display={["none", "block"]}>
-                      06 de Agosto,
-                      <br /> 2022
-                    </Td>
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="teal"
-                        leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
-                      >
-                        {isWidescreen ? "Editar" : ""}
-                      </Button>
-                    </Td>
-                  </Tr>
-
-                  <Tr>
-                    <Td px="6">
-                      <Checkbox colorScheme="green" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Valmir Almeida</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          almeidavalmir76@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    <Td display={["none", "block"]}>
-                      06 de Agosto,
-                      <br /> 2022
-                    </Td>
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="teal"
-                        leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
-                      >
-                        {isWidescreen ? "Editar" : ""}
-                      </Button>
-                    </Td>
-                  </Tr>
-
-                  <Tr>
-                    <Td px="6">
-                      <Checkbox colorScheme="teal" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Valmir Almeida</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          almeidavalmir76@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    <Td display={["none", "block"]}>
-                      06 de Agosto,
-                      <br /> 2022
-                    </Td>
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="teal"
-                        leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
-                      >
-                        {isWidescreen ? "Editar" : ""}
-                      </Button>
-                    </Td>
-                  </Tr>
+                  {data.users.map((user) => {
+                    return (
+                      <Tr key={user.id}>
+                        <Td px="6">
+                          <Checkbox colorScheme="teal" />
+                        </Td>
+                        <Td>
+                          <Box>
+                            <Text fontWeight="bold">{user.name}</Text>
+                            <Text fontSize="sm" color="gray.300">
+                              {user.email}
+                            </Text>
+                          </Box>
+                        </Td>
+                        <Td display={["none", "block"]}>
+                          <Text fontSize="md">
+                            {new Date(user.created_at).toLocaleDateString(
+                              "pt-br",
+                              { day: "numeric", month: "long", year: "numeric" }
+                            )}
+                          </Text>
+                        </Td>
+                        <Td>
+                          <Button
+                            as="a"
+                            size="sm"
+                            fontSize="sm"
+                            colorScheme="teal"
+                            leftIcon={
+                              <Icon as={RiPencilLine} fontSize="16"></Icon>
+                            }
+                          >
+                            {isWidescreen ? "Editar" : ""}
+                          </Button>
+                        </Td>
+                      </Tr>
+                    );
+                  })}
                 </Tbody>
               </Table>
               <Pagination />
