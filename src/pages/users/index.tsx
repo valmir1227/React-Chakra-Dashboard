@@ -18,31 +18,12 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
-import { useQuery } from "react-query";
 import Header from "../../components/Header/Header";
 import Pagination from "../../components/Pagination";
 import Sidebar from "../../components/Sidebar";
-import { api } from "../../services/api";
-
+import { useUsers } from "../../services/hooks/useUsers";
 export default function UserList() {
-  const { data, isLoading, error, isFetching } = useQuery("users", async () => {
-    const { data } = await api.get("http://localhost:3000/api/users");
-
-    const users = data.users.map((user) => {
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        createdAt: new Date(user.created_at).toLocaleDateString("pt-BR", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }),
-      };
-    });
-
-    return users;
-  });
+  const { data, isLoading, error, isFetching } = useUsers();
 
   const isWidescreen = useBreakpointValue({
     base: false,
