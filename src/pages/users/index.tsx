@@ -14,6 +14,7 @@ import {
   Text,
   useBreakpointValue,
   Spinner,
+  Progress,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
@@ -60,9 +61,108 @@ export default function UserList() {
             </Link>
           </Flex>
           {isLoading ? (
-            <Flex justify="center">
-              <Spinner />
-            </Flex>
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Th>
+                  <Th display={["none", "block"]}>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Th>
+
+                  <Th>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Th>
+                </Tr>
+
+                <Tr>
+                  <Th>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Th>
+                  <Th display={["none", "block"]}>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Th>
+
+                  <Th>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td>
+                    <Box>
+                      <Progress
+                        size="lg"
+                        h="32px"
+                        bg="whiteAlpha.200"
+                        colorScheme="gray"
+                        isIndeterminate
+                      />
+                    </Box>
+                  </Td>
+
+                  <Td>
+                    <Box>
+                      <Progress
+                        size="lg"
+                        h="32px"
+                        bg="whiteAlpha.200"
+                        colorScheme="gray"
+                        isIndeterminate
+                      />
+                    </Box>
+                  </Td>
+
+                  <Td display={["none", "block"]}>
+                    <Progress
+                      size="lg"
+                      h="32px"
+                      bg="whiteAlpha.200"
+                      colorScheme="gray"
+                      isIndeterminate
+                    />
+                  </Td>
+                </Tr>
+              </Tbody>
+            </Table>
           ) : error ? (
             <Flex justify="center">
               <Text>Falha ao obter dados do usuários</Text>

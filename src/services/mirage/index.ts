@@ -34,7 +34,7 @@ export function makeServer() {
     routes() {
       this.namespace = "api";
 
-      this.timing = 1000;
+      this.timing = 1500;
       this.get("/users");
       this.post("/users");
 
