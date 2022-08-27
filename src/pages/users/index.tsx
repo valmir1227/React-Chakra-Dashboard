@@ -13,26 +13,28 @@ import {
   Tr,
   Text,
   useBreakpointValue,
-  theme,
+  Spinner,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect } from "react";
-import { RiAddLine, RiPencilLine, RiRefreshLine } from "react-icons/ri";
+import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import Header from "../../components/Header/Header";
 import Pagination from "../../components/Pagination";
 import Sidebar from "../../components/Sidebar";
+import { useQuery } from "react-query";
 
 export default function UserList() {
+  const { data, isLoading, error } = useQuery("users", async () => {
+    const response = await fetch("http://localhost:3000/api/users");
+    const data = await response.json();
+
+    return data;
+  });
+
   const isWidescreen = useBreakpointValue({
     base: false,
     lg: true,
   });
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/users")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
 
   return (
     <Box>
@@ -58,107 +60,119 @@ export default function UserList() {
               </Button>
             </Link>
           </Flex>
-          <Table colorScheme="whiteAlpha">
-            <Thead>
-              <Tr>
-                <Th px="6" color="gray.300" width="8">
-                  <Checkbox colorScheme="green" />
-                </Th>
-                <Th>Usuário</Th>
-                <Th display={["none", "block"]}>Data de cadastro</Th>
-                <Th w="8"></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td px="6">
-                  <Checkbox colorScheme="green" />
-                </Td>
-                <Td>
-                  <Box>
-                    <Text fontWeight="bold">Valmir Almeida</Text>
-                    <Text fontSize="sm" color="gray.300">
-                      almeidavalmir76@gmail.com
-                    </Text>
-                  </Box>
-                </Td>
-                <Td display={["none", "block"]}>
-                  06 de Agosto,
-                  <br /> 2022
-                </Td>
-                <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="teal"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
-                  >
-                    {isWidescreen ? "Editar" : ""}
-                  </Button>
-                </Td>
-              </Tr>
+          {isLoading ? (
+            <Flex justify="center">
+              <Spinner />
+            </Flex>
+          ) : error ? (
+            <Flex justify="center">
+              <Text>Falha ao obter dados do usuários</Text>
+            </Flex>
+          ) : (
+            <>
+              <Table colorScheme="whiteAlpha">
+                <Thead>
+                  <Tr>
+                    <Th px="6" color="gray.300" width="8">
+                      <Checkbox colorScheme="green" />
+                    </Th>
+                    <Th>Usuário</Th>
+                    <Th display={["none", "block"]}>Data de cadastro</Th>
+                    <Th w="8"></Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  <Tr>
+                    <Td px="6">
+                      <Checkbox colorScheme="green" />
+                    </Td>
+                    <Td>
+                      <Box>
+                        <Text fontWeight="bold">Valmir Almeida</Text>
+                        <Text fontSize="sm" color="gray.300">
+                          almeidavalmir76@gmail.com
+                        </Text>
+                      </Box>
+                    </Td>
+                    <Td display={["none", "block"]}>
+                      06 de Agosto,
+                      <br /> 2022
+                    </Td>
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="teal"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
+                      >
+                        {isWidescreen ? "Editar" : ""}
+                      </Button>
+                    </Td>
+                  </Tr>
 
-              <Tr>
-                <Td px="6">
-                  <Checkbox colorScheme="green" />
-                </Td>
-                <Td>
-                  <Box>
-                    <Text fontWeight="bold">Valmir Almeida</Text>
-                    <Text fontSize="sm" color="gray.300">
-                      almeidavalmir76@gmail.com
-                    </Text>
-                  </Box>
-                </Td>
-                <Td display={["none", "block"]}>
-                  06 de Agosto,
-                  <br /> 2022
-                </Td>
-                <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="teal"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
-                  >
-                    {isWidescreen ? "Editar" : ""}
-                  </Button>
-                </Td>
-              </Tr>
+                  <Tr>
+                    <Td px="6">
+                      <Checkbox colorScheme="green" />
+                    </Td>
+                    <Td>
+                      <Box>
+                        <Text fontWeight="bold">Valmir Almeida</Text>
+                        <Text fontSize="sm" color="gray.300">
+                          almeidavalmir76@gmail.com
+                        </Text>
+                      </Box>
+                    </Td>
+                    <Td display={["none", "block"]}>
+                      06 de Agosto,
+                      <br /> 2022
+                    </Td>
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="teal"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
+                      >
+                        {isWidescreen ? "Editar" : ""}
+                      </Button>
+                    </Td>
+                  </Tr>
 
-              <Tr>
-                <Td px="6">
-                  <Checkbox colorScheme="teal" />
-                </Td>
-                <Td>
-                  <Box>
-                    <Text fontWeight="bold">Valmir Almeida</Text>
-                    <Text fontSize="sm" color="gray.300">
-                      almeidavalmir76@gmail.com
-                    </Text>
-                  </Box>
-                </Td>
-                <Td display={["none", "block"]}>
-                  06 de Agosto,
-                  <br /> 2022
-                </Td>
-                <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="teal"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
-                  >
-                    {isWidescreen ? "Editar" : ""}
-                  </Button>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-          <Pagination />
+                  <Tr>
+                    <Td px="6">
+                      <Checkbox colorScheme="teal" />
+                    </Td>
+                    <Td>
+                      <Box>
+                        <Text fontWeight="bold">Valmir Almeida</Text>
+                        <Text fontSize="sm" color="gray.300">
+                          almeidavalmir76@gmail.com
+                        </Text>
+                      </Box>
+                    </Td>
+                    <Td display={["none", "block"]}>
+                      06 de Agosto,
+                      <br /> 2022
+                    </Td>
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="teal"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="16"></Icon>}
+                      >
+                        {isWidescreen ? "Editar" : ""}
+                      </Button>
+                    </Td>
+                  </Tr>
+                </Tbody>
+              </Table>
+              <Pagination />
+            </>
+          )}
         </Box>
       </Flex>
     </Box>
