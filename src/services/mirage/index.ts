@@ -16,7 +16,7 @@ export function makeServer() {
     factories: {
       user: Factory.extend({
         name(i: number) {
-          return `User${i + 1}`;
+          return `Usuário${i + 1}`;
         },
         email() {
           return faker.internet.email().toLocaleLowerCase();
@@ -34,7 +34,7 @@ export function makeServer() {
     routes() {
       this.namespace = "api";
 
-      this.timing = 3000;
+      this.timing = 10000;
       this.get("/users");
       this.post("/users");
 

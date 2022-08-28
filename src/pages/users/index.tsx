@@ -25,6 +25,8 @@ import { useUsers } from "../../services/hooks/useUsers";
 export default function UserList() {
   const { data, isLoading, error, isFetching } = useUsers();
 
+  const numberUsersLoading = [1, 2, 3, 4, 5, 6, 7, 8, , 10];
+
   const isWidescreen = useBreakpointValue({
     base: false,
     lg: true,
@@ -60,105 +62,46 @@ export default function UserList() {
           {isLoading ? (
             <Table>
               <Thead>
-                <Tr>
-                  <Th>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Th>
-                  <Th display={["none", "block"]}>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Th>
-
-                  <Th>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Th>
-                </Tr>
-
-                <Tr>
-                  <Th>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Th>
-                  <Th display={["none", "block"]}>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Th>
-
-                  <Th>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Th>
-                </Tr>
+                {numberUsersLoading.map(() => {
+                  return (
+                    <>
+                      <Tr>
+                        <Th>
+                          <Progress
+                            size="lg"
+                            h="32px"
+                            bg="whiteAlpha.200"
+                            colorScheme="gray"
+                            isIndeterminate
+                          />
+                        </Th>
+                        {isWidescreen ? (
+                          <>
+                            <Th>
+                              <Progress
+                                size="lg"
+                                h="32px"
+                                bg="whiteAlpha.200"
+                                colorScheme="gray"
+                                isIndeterminate
+                              />
+                            </Th>
+                            <Th>
+                              <Progress
+                                size="lg"
+                                h="32px"
+                                bg="whiteAlpha.200"
+                                colorScheme="gray"
+                                isIndeterminate
+                              />
+                            </Th>
+                          </>
+                        ) : null}
+                      </Tr>
+                    </>
+                  );
+                })}
               </Thead>
-              <Tbody>
-                <Tr>
-                  <Td>
-                    <Box>
-                      <Progress
-                        size="lg"
-                        h="32px"
-                        bg="whiteAlpha.200"
-                        colorScheme="gray"
-                        isIndeterminate
-                      />
-                    </Box>
-                  </Td>
-
-                  <Td>
-                    <Box>
-                      <Progress
-                        size="lg"
-                        h="32px"
-                        bg="whiteAlpha.200"
-                        colorScheme="gray"
-                        isIndeterminate
-                      />
-                    </Box>
-                  </Td>
-
-                  <Td display={["none", "block"]}>
-                    <Progress
-                      size="lg"
-                      h="32px"
-                      bg="whiteAlpha.200"
-                      colorScheme="gray"
-                      isIndeterminate
-                    />
-                  </Td>
-                </Tr>
-              </Tbody>
             </Table>
           ) : error ? (
             <Flex justify="center">

@@ -8,7 +8,6 @@ type User = {
     createdAt: string
 }
 
-
 async function getUsers(): Promise<User[]> {
     const { data } = await api.get("users");
 
