@@ -66,7 +66,7 @@ export default function UserList() {
                   return (
                     <>
                       <Tr>
-                        <Th>
+                        <Th border="none">
                           <Progress
                             size="lg"
                             h="32px"
@@ -77,7 +77,7 @@ export default function UserList() {
                         </Th>
                         {isWidescreen ? (
                           <>
-                            <Th>
+                            <Th border="none">
                               <Progress
                                 size="lg"
                                 h="32px"
@@ -86,7 +86,7 @@ export default function UserList() {
                                 isIndeterminate
                               />
                             </Th>
-                            <Th>
+                            <Th border="none">
                               <Progress
                                 size="lg"
                                 h="32px"
@@ -123,7 +123,11 @@ export default function UserList() {
                 <Tbody>
                   {data.map((user) => {
                     return (
-                      <Tr key={user.id}>
+                      <Tr
+                        alignItems="center"
+                        justifyContent="center"
+                        key={user.id}
+                      >
                         <Td px="6">
                           <Checkbox colorScheme="teal" />
                         </Td>
@@ -136,7 +140,9 @@ export default function UserList() {
                           </Box>
                         </Td>
                         <Td display={["none", "block"]}>
-                          <Text fontSize="md">{user.createdAt}</Text>
+                          <Flex minH="49px" align="center">
+                            <Text>{user.createdAt}</Text>
+                          </Flex>
                         </Td>
                         <Td>
                           <Button
