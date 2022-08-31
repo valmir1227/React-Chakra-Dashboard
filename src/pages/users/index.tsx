@@ -25,7 +25,7 @@ import { useUsers } from "../../services/hooks/useUsers";
 export default function UserList() {
   const { data, isLoading, error, isFetching } = useUsers();
 
-  const numberUsersLoading = [1, 2, 3, 4, 5, 6, 7, 8, , 10];
+  const numberUsersLoading = Array.from(Array(10));
 
   const isWidescreen = useBreakpointValue({
     base: false,
@@ -113,7 +113,7 @@ export default function UserList() {
                 <Thead>
                   <Tr>
                     <Th px="6" color="gray.300" width="8">
-                      <Checkbox colorScheme="green" />
+                      <Checkbox colorScheme="teal" />
                     </Th>
                     <Th>Usuário</Th>
                     <Th display={["none", "block"]}>Data de cadastro</Th>
