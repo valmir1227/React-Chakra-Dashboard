@@ -1,4 +1,4 @@
-import { createServer, Factory, Model } from "miragejs";
+import { createServer, Factory, Model, Response } from "miragejs";
 import { faker } from "@faker-js/faker";
 
 type User = {
@@ -35,13 +35,30 @@ export function makeServer() {
       this.namespace = "api";
 
       this.timing = 2000;
-      this.get("/users");
+      this.get("/users", function (squema, request) {
+        const { page = 1, per_page = 10 } = request.queryParams;
+        const total = squema.all("user").length;
+
+        const pageStart = Number(page - 1) * Number(per_page);
+        const pageEnd = pageStart + Number(per_page);
+        const users = this.serialize(
+          squema.all("user")).users.slice(pageStart, pageEnd)
+
+        return new Response(
+          200,
+          {
+            "x-total-count": String(total)
+          },
+          { users }
+        );
+      });
+
       this.post("/users");
 
       this.namespace = "";
       this.passthrough();
     },
   });
-
   return server;
+
 }
