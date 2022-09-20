@@ -28,7 +28,7 @@ export function makeServer() {
       }),
     },
     seeds(server) {
-      server.createList("user", 10);
+      server.createList("user", 200);
     },
 
     routes() {
@@ -41,13 +41,15 @@ export function makeServer() {
 
         const pageStart = Number(page - 1) * Number(per_page);
         const pageEnd = pageStart + Number(per_page);
-        const users = this.serialize(
-          squema.all("user")).users.slice(pageStart, pageEnd)
+        const users = this.serialize(squema.all("user")).users.slice(
+          pageStart,
+          pageEnd
+        );
 
         return new Response(
           200,
           {
-            "x-total-count": String(total)
+            "x-total-count": String(total),
           },
           { users }
         );
@@ -60,5 +62,4 @@ export function makeServer() {
     },
   });
   return server;
-
 }
