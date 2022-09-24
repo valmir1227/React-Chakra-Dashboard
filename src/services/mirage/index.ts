@@ -35,12 +35,16 @@ export function makeServer() {
       this.namespace = "api";
 
       this.timing = 2000;
+
       this.get("/users", function (squema, request) {
         const { page = 1, per_page = 10 } = request.queryParams;
+
         const total = squema.all("user").length;
 
         const pageStart = Number(page - 1) * Number(per_page);
+        
         const pageEnd = pageStart + Number(per_page);
+
         const users = this.serialize(squema.all("user")).users.slice(
           pageStart,
           pageEnd
@@ -55,6 +59,7 @@ export function makeServer() {
         );
       });
 
+      this.get("/users/:id");
       this.post("/users");
 
       this.namespace = "";

@@ -10,9 +10,8 @@ interface PaginationProps {
 
 const siblingsCount = 1;
 
-generatePagesArray(2, 5);
-
 function generatePagesArray(from: number, to: number) {
+
   return [...new Array(to - from)]
     .map((_, index) => {
       return from + index + 1;
@@ -91,7 +90,7 @@ export default function Pagination({
               />
             );
           })}
-
+                                                
         {currentPage + siblingsCount < lastPage && (
           <>
             {currentPage + 1 + siblingsCount < lastPage && (

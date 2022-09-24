@@ -7,12 +7,13 @@ type User = {
   email: string;
   createdAt: string;
 };
-type GetUSersResponse = {
+
+type GetUserResponse = {
   totalCount: number;
   users: User[];
 };
 
-async function getUsers(page: number): Promise<GetUSersResponse> {
+async function getUsers(page: number): Promise<GetUserResponse> {
   const { data, headers } = await api.get("users", {
     params: {
       page,
