@@ -1,4 +1,10 @@
-import { createServer, Factory, Model, Response } from "miragejs";
+import {
+  ActiveModelSerializer,
+  createServer,
+  Factory,
+  Model,
+  Response,
+} from "miragejs";
 import { faker } from "@faker-js/faker";
 
 type User = {
@@ -9,6 +15,9 @@ type User = {
 
 export function makeServer() {
   const server = createServer({
+    serializers: {
+      aplication: ActiveModelSerializer,
+    },
     models: {
       user: Model.extend<Partial<User>>({}),
     },
@@ -28,7 +37,7 @@ export function makeServer() {
       }),
     },
     seeds(server) {
-      server.createList("user", 200);
+      server.createList("user", 12);
     },
 
     routes() {
@@ -42,7 +51,7 @@ export function makeServer() {
         const total = squema.all("user").length;
 
         const pageStart = Number(page - 1) * Number(per_page);
-        
+
         const pageEnd = pageStart + Number(per_page);
 
         const users = this.serialize(squema.all("user")).users.slice(

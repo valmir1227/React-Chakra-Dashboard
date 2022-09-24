@@ -30,8 +30,8 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           bgColor: "gray.900",
         }}
         size="lg"
-        ref={ref}
         {...rest}
+        ref={ref}
       />
 
       {!!error && <FormErrorMessage>{error.message}</FormErrorMessage>}
